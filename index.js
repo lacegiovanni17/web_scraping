@@ -16,7 +16,12 @@ async function run() {
 
     // const title = await page.evaluate(() => document.title); // to get page title
     // const text = await page.evaluate(() => document.body.innerText); //to get all the text on the website
-    const links = await page.evaluate(() => Array.from(document.querySelectorAll('a'), (e) => e.href))
+    // const links = await page.evaluate(() => Array.from(document.querySelectorAll('a'), (e) => e.href)) // to get all links
+    const links = await page.evaluate(() =>
+        Array.from(document.querySelectorAll("#courses .card"), (e) => ({
+          title: e.querySelector('.card-body h3').innerText,
+      }))
+    );
     console.log(links); //show on terminal
 
     await browser.close(); //to close the browser
