@@ -8,10 +8,15 @@ async function run() {
     }); //varaible to launch a browser
     const page = await browser.newPage(); //to access a page with a page variable
     await page.goto("https://www.traversymedia.com"); //to access a specific page
+    //Now you can access DOM elements below this line or pretty much anything you want
 
     // await page.screenshot({ path: 'screenshot.png', fullPage: true }); //to take a screenshot of the page
-    await page.pdf({ path: 'screenshot.pdf', format: 'A4'}); //to take a screenshot of the page
-    
+    // await page.pdf({ path: 'screenshot.pdf', format: 'A4'}); //to take a screenshot of the page
+    // const html = await page.content();
+
+    const title = await page.evaluate(() => document.title); // to get page title
+    console.log(title);
+
     await browser.close(); //to close the browser
 }
 
