@@ -14,8 +14,9 @@ async function run() {
     // await page.pdf({ path: 'screenshot.pdf', format: 'A4'}); //to take a screenshot of the page
     // const html = await page.content();
 
-    const title = await page.evaluate(() => document.title); // to get page title
-    console.log(title);
+    // const title = await page.evaluate(() => document.title); // to get page title
+    const text = await page.evaluate(() => document.body.innerText); //to get all the text on the website
+    console.log(text);
 
     await browser.close(); //to close the browser
 }
